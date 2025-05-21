@@ -3,9 +3,9 @@ pragma solidity 0.8.20;
 
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-// asset - 0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c 18
-// LiquidityToken - 0xcD6a42782d230D7c13A74ddec5dD140e55499Df9 6
-// LiquidityProvider - 0xaE036c65C649172b43ef7156b009c6221B596B8b
+// asset - 0x5e17b14ADd6c386305A32928F985b29bbA34Eff5 18
+// LiquidityToken - 0x3328358128832A260C76A4141e19E2A943CD4B6D 6
+// LiquidityProvider - 0xe2899bddFD890e320e643044c6b95B9B0b84157A
 
 interface ILiquidityProvider {
     function liquidityToken() external view returns (ERC20);
@@ -59,7 +59,7 @@ contract SecuritizeRedemption {
         asset = ERC20(_asset);
     }
 
-    // 23136
+    // 23203
     function calculateOrig() public view returns (uint256) {
         uint256 _amount = 1000000000000000000;
         uint256 rate = 2000000;
@@ -109,8 +109,32 @@ contract SecuritizeRedemption {
         return (_amount * rate) / (10**assetDecimals);
     }
 
-    // 6867
+    // 6833
     function calculateWithCachedDecimals() public view returns (uint256) {
+        uint256 _amount = 1000000000000000000;
+        uint256 rate = 2000000;
+
+        if (cachedLiquidityDecimals > cachedAssetDecimals) {
+            return
+                ((_amount * rate) *
+                    (10**(cachedLiquidityDecimals - cachedAssetDecimals))) /
+                (10**cachedLiquidityDecimals);
+        }
+        if (cachedLiquidityDecimals < cachedAssetDecimals) {
+            return
+                (_amount * rate) /
+                (10**(cachedAssetDecimals - cachedLiquidityDecimals)) /
+                (10**cachedLiquidityDecimals);
+        }
+        return (_amount * rate) / (10**cachedAssetDecimals);
+    }
+
+    // 6889
+    function calculateWithCachedDecimalsAndScalingFactor()
+        public
+        view
+        returns (uint256)
+    {
         uint256 _amount = 1000000000000000000;
         uint256 rate = 2000000;
 

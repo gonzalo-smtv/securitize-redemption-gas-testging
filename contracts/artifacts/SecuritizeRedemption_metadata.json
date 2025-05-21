@@ -46,6 +46,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "calculateWithCachedDecimalsAndScalingFactor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "calculateWithScalingFactor",
 				"outputs": [
 					{
@@ -165,11 +178,11 @@
 			]
 		},
 		"contracts/SecuritizeRedemption.sol": {
-			"keccak256": "0xfd5ea805c4efd2463c611498a43c389a4ad23dadc3169b718355e6d34f4d5abf",
+			"keccak256": "0xe141cf71aaf796dc55a8bca6b58f0c426aaf9c4d57eb03f3b65a10a1d7ca2b0c",
 			"license": "Apache-2.0",
 			"urls": [
-				"bzz-raw://893b3fafff2a4cb9ab62c85ba0df6e47326a5487e62d41ae3e5d9f4bc22a9fbb",
-				"dweb:/ipfs/QmfRC5U3DDuWzn9DZrc8iL8yfFbocxHSkj3eFhQ6Fsisyn"
+				"bzz-raw://d1f430dfd019208c11b855db7065f1f8c02840891ee7fa3404d59c961206f4d8",
+				"dweb:/ipfs/QmQMYaFUUF5JRcxq7UG8sfkMKUd2nbF37b8YMybA3mwyTS"
 			]
 		}
 	},
